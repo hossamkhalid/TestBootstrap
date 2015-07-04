@@ -39,7 +39,8 @@ function initialize() {
 		radius: 500,
 		query: 'coffee shop'
 	  };
-	  locwindow = new google.maps.InfoWindow();
+	  
+	  infowindow = new google.maps.InfoWindow();
 	  var service = new google.maps.places.PlacesService(map);
 	  //service.nearbySearch(request, callback);
 	  service.textSearch(request, callback);
