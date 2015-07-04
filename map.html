@@ -26,10 +26,16 @@ function initialize() {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pyrmont = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 					//new google.maps.LatLng(50.859216, -0.983995);
-      var locwindow = new google.maps.InfoWindow({
-        map: map,
-        position: pyrmont,
-        content: 'Location found using HTML5.'
+      var locwindow = new google.maps.InfoWindow();
+	  
+	  var locmarker = new google.maps.Marker({
+		map: map,
+		position: pyrmont
+	  });
+	  
+	  google.maps.event.addListener(locmarker, 'click', function() {
+	    locwindow.setContent('My Location');
+        locwindow.open(map, this);
       });
 	  
 	  map.setCenter(pyrmont);
