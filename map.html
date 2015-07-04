@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Place searches</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
+    <script>
+var map;
+var service;
+var infowindow;
+
+function initialize() {
+	map = new google.maps.Map(document.getElementById('map-canvas'), {
+		zoom: 15
+	});
+	
+	if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pyrmont = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+					//new google.maps.LatLng(50.859216, -0.983995);
+      var locwindow = new google.maps.InfoWindow({
+        map: map,
+        position: pyrmont,
+        content: 'Location found using HTML5.'
+      });
+	  
+	  map.setCenter(pyrmont);
+
+	  var request = {
+		location: pyrmont,
+		radius: 500,
+		query: 'coffee shop'
+	  };
+	  
+	  infowindow = new google.maps.InfoWindow();
+	  var service = new google.maps.places.PlacesService(map);
+	  //service.nearbySearch(request, callback);
+	  service.textSearch(request, callback);
+	  
+	  var image = 'man.png';
+	  var marker = new google.maps.Marker({
+		  position: pyrmont,
+		  map: map,
+		  content: 'Location found using HTML5.',
+		  icon: image
+	  });
+  
+	  google.maps.event.addListener(marker, 'click', function() {
+		locwindow.setContent('My Location');
+		locwindow.open(map, this);
+	  });
+    }, function() {
+      handleNoGeolocation(true);
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleNoGeolocation(false);
+  }
+}
+
+function handleNoGeolocation(errorFlag) {
+  if (errorFlag) {
+    var content = 'Error: The Geolocation service failed.';
+  } else {
+    var content = 'Error: Your browser doesn\'t support geolocation.';
+  }
+  var image = 'man.png';
+  var options = {
+    map: map,
+    position: new google.maps.LatLng(60, 105),
+    content: content,
+	icon: image
+  };
+  
+  var marker = new google.maps.Marker({
+		  position: new google.maps.LatLng(60, 105),
+		  map: map,
+		  icon: image
+	  });
+
+  var infowindow = new google.maps.InfoWindow(options);
+  map.setCenter(options.position);
+}
+
+function callback(results, status) {
+  if (status == google.maps.places.PlacesServiceStatus.OK) {
+    for (var i = 0; i < results.length; i++) {
+      createMarker(results[i]);
+    }
+  }
+}
+
+function createMarker(place) {
+  var placeLoc = place.geometry.location;
+  var marker = new google.maps.Marker({
+    map: map,
+    position: place.geometry.location
+  });
+
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.setContent(place.name);
+    infowindow.open(map, this);
+  });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
+</html>
