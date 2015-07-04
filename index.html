@@ -12,11 +12,11 @@
       }
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
+	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <script>
 var map;
 var service;
 var infowindow;
-var locwindow;
 
 function initialize() {
 
@@ -24,12 +24,6 @@ function initialize() {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pyrmont = new google.maps.LatLng(position.coords.latitude,
                                        position.coords.longitude);
-
-      var locwindow = new google.maps.InfoWindow({
-        map: map,
-        position: pyrmont,
-        content: 'Location found using HTML5.'
-      });
 
       map.setCenter(pyrmont);
     }, function() {
@@ -40,6 +34,8 @@ function initialize() {
     handleNoGeolocation(false);
   }
   
+  
+  //var pyrmont = new google.maps.LatLng(50.859216,-0.9839959);
 
   map = new google.maps.Map(document.getElementById('map-canvas'), {
     center: pyrmont,
@@ -55,6 +51,18 @@ function initialize() {
   var service = new google.maps.places.PlacesService(map);
   //service.nearbySearch(request, callback);
   service.textSearch(request, callback);
+  
+  var image = 'man.png';
+  var marker = new google.maps.Marker({
+      position: pyrmont,
+      map: map,
+	  icon: image
+  });
+  
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.setContent('My Location');
+    infowindow.open(map, this);
+  });
 }
 
 function handleNoGeolocation(errorFlag) {
@@ -70,10 +78,9 @@ function handleNoGeolocation(errorFlag) {
     content: content
   };
 
-  var locwindow = new google.maps.InfoWindow(options);
+  var infowindow = new google.maps.InfoWindow(options);
   map.setCenter(options.position);
 }
-
 
 function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
