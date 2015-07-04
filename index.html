@@ -18,18 +18,14 @@ var service;
 var infowindow;
 
 function initialize() {
-
-	
-
 	map = new google.maps.Map(document.getElementById('map-canvas'), {
 		zoom: 15
 	});
 	
 	if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-      var pyrmont = new google.maps.LatLng(position.coords.latitude,
-                                       position.coords.longitude);
-
+      var pyrmont = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+					//new google.maps.LatLng(50.859216, -0.983995);
       var infowindow = new google.maps.InfoWindow({
         map: map,
         position: pyrmont,
@@ -37,6 +33,30 @@ function initialize() {
       });
 
       map.setCenter(pyrmont);
+	  
+	  map.setCenter(pyrmont);
+
+	  var request = {
+		location: pyrmont,
+		radius: 500,
+		query: 'coffee shop'
+	  };
+	  infowindow = new google.maps.InfoWindow();
+	  var service = new google.maps.places.PlacesService(map);
+	  //service.nearbySearch(request, callback);
+	  service.textSearch(request, callback);
+	  
+	  var image = 'man.png';
+	  var marker = new google.maps.Marker({
+		  position: pyrmont,
+		  map: map,
+		  icon: image
+	  });
+  
+	  google.maps.event.addListener(marker, 'click', function() {
+		infowindow.setContent('My Location');
+		infowindow.open(map, this);
+	  });
     }, function() {
       handleNoGeolocation(true);
     });
@@ -44,36 +64,6 @@ function initialize() {
     // Browser doesn't support Geolocation
     handleNoGeolocation(false);
   }
-	
-    map.setCenter(pyrmont);
-  
-  
-  
-  //
-
-  
-
-  var request = {
-    location: pyrmont,
-    radius: 500,
-    query: 'coffee shop'
-  };
-  infowindow = new google.maps.InfoWindow();
-  var service = new google.maps.places.PlacesService(map);
-  //service.nearbySearch(request, callback);
-  service.textSearch(request, callback);
-  
-  var image = 'man.png';
-  var marker = new google.maps.Marker({
-      position: pyrmont,
-      map: map,
-	  icon: image
-  });
-  
-  google.maps.event.addListener(marker, 'click', function() {
-    infowindow.setContent('My Location');
-    infowindow.open(map, this);
-  });
 }
 
 function handleNoGeolocation(errorFlag) {
@@ -82,12 +72,19 @@ function handleNoGeolocation(errorFlag) {
   } else {
     var content = 'Error: Your browser doesn\'t support geolocation.';
   }
-
+  var image = 'man.png';
   var options = {
     map: map,
     position: new google.maps.LatLng(60, 105),
-    content: content
+    content: content,
+	icon: image
   };
+  
+  var marker = new google.maps.Marker({
+		  position: new google.maps.LatLng(60, 105),
+		  map: map,
+		  icon: image
+	  });
 
   var infowindow = new google.maps.InfoWindow(options);
   map.setCenter(options.position);
