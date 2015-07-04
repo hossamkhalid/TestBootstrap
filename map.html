@@ -103,11 +103,14 @@ function createMarker(place) {
   });
 
   google.maps.event.addListener(marker, 'click', function() {
-    infowindow.setContent(place.name);
+    infowindow.setContent(place.name+'<br><a href="#" onclick="addToFavs('+place.name+')">Add to Favourites</a>');
     infowindow.open(map, this);
   });
 }
 
+function addToFavs(fav) {
+	alert(fav + 'added to favourites');
+}
 google.maps.event.addDomListener(window, 'load', initialize);
 
     </script>
