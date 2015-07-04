@@ -12,7 +12,6 @@
       }
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
-	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <script>
 var map;
 var service;
@@ -20,15 +19,34 @@ var infowindow;
 
 function initialize() {
 
-	var pyrmont = new google.maps.LatLng(position.coords.latitude,
-                                       position.coords.longitude);
+	
 
 	map = new google.maps.Map(document.getElementById('map-canvas'), {
-		center: pyrmont,
 		zoom: 15
 	});
 	
+	if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pyrmont = new google.maps.LatLng(position.coords.latitude,
+                                       position.coords.longitude);
+
+      var infowindow = new google.maps.InfoWindow({
+        map: map,
+        position: pyrmont,
+        content: 'Location found using HTML5.'
+      });
+
+      map.setCenter(pyrmont);
+    }, function() {
+      handleNoGeolocation(true);
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleNoGeolocation(false);
+  }
+	
     map.setCenter(pyrmont);
+  
   
   
   //
