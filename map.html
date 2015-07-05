@@ -111,13 +111,25 @@ function createMarker(place) {
 		if(place.name.trim() == arr[i])
 		{ found = true;}
 	}
+	
+	var content = '<b>'+place.name.trim()+'</b><br>'+place.formatted_address+'<br>';
+	if(place.opening_hours != null && place.opening_hours.open_now != null)
+	{
+		if(place.opening_hours.open_now)
+			content += 'Open now<br>';
+		else
+			content += 'Closed<br>'
+	}
+		
+	
 	if(!found)
 	{
-		infowindow.setContent('<b>'+place.name.trim()+'</b><br>'+place.formatted_address+'<br><a href="#" onclick="addToFavs(\''+place.name.trim()+'\'); return false;">Add to favourites</a>');
+		
+		infowindow.setContent(content+'<a href="#" onclick="addToFavs(\''+place.name.trim()+'\'); return false;">Add to favourites</a>');
 	}
 	else
 	{
-		infowindow.setContent('<b>'+place.name.trim()+'</b><br>'+place.formatted_address+'<br><a href="#" onclick="addToFavs(\''+place.name.trim()+'\'); return false;">Remove from favourites</a>');
+		infowindow.setContent(content+'<a href="#" onclick="addToFavs(\''+place.name.trim()+'\'); return false;">Remove from favourites</a>');
 	}
     infowindow.open(map, this);
   });
