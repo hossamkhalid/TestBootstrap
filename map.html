@@ -16,6 +16,7 @@
 var map;
 var service;
 var infowindow;
+var arr;
 
 function initialize() {
 	map = new google.maps.Map(document.getElementById('map-canvas'), {
@@ -61,6 +62,9 @@ function initialize() {
     // Browser doesn't support Geolocation
     handleNoGeolocation(false);
   }
+  
+	var favs = localStorage.getItem("cofeeFinderFavs");
+	arr = favs.split(";");
 }
 
 function handleNoGeolocation(errorFlag) {
@@ -103,7 +107,20 @@ function createMarker(place) {
   });
 
   google.maps.event.addListener(marker, 'click', function() {
-    infowindow.setContent(place.name+'<br><a href="#" onclick="addToFavs(\''+place.name.trim()+'\'); return false;">Add to Favourites</a>');
+	var found = false;
+	for(var i=0;i<arr.length;i++)
+	{
+		if(fav == arr[i])
+		{ found = true;}
+	}
+	if(!found)
+	{
+		infowindow.setContent(place.name+'<br><a href="#" onclick="addToFavs(\''+place.name.trim()+'\'); return false;">Add to favourites</a>');
+	}
+	else
+	{
+		infowindow.setContent(place.name+'<br><a href="#" onclick="addToFavs(\''+place.name.trim()+'\'); return false;">Remove from favourites</a>');
+	}
     infowindow.open(map, this);
   });
 }
@@ -111,7 +128,17 @@ function createMarker(place) {
 function addToFavs(fav) {
 	if(typeof(Storage) !== "undefined") {
 		// Code for localStorage/sessionStorage.
-		localStorage.setItem("cofeeFinderFavs", fav);
+		var found = false;
+		for(var i=0;i<arr.length;i++)
+		{
+			if(fav == arr[i])
+			{ found = true;}
+		}
+		if(!found)
+		{
+			favs += ";"+fav;
+			localStorage.setItem("cofeeFinderFavs", favs);
+		}
 	} else {
 		// Sorry! No Web Storage support..
 		alert('Cannot add '+fav + ' to favourites.');
