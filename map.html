@@ -132,7 +132,7 @@ function createMarker(place) {
 	}
 	else
 	{
-		infowindow.setContent(content+'<a href="#" onclick="addToFavs(\''+name+'\'); return false;">Remove from favourites</a>');
+		infowindow.setContent(content+'<a href="#" onclick="removeFromFavs(\''+name+'\'); return false;">Remove from favourites</a>');
 	}
     infowindow.open(map, this);
   });
@@ -158,6 +158,20 @@ function addToFavs(fav) {
 	} else {
 		// Sorry! No Web Storage support..
 		alert('Cannot add '+fav + ' to favourites.');
+	}
+}
+
+function removeFromFavs(fav) {
+	if(typeof(Storage) !== "undefined") {
+		// Code for localStorage/sessionStorage.
+		var favs = localStorage.getItem("cofeeFinderFavs");
+		favs.replace(fav,"");
+		favs.replace(";;",";");
+		localStorage.setItem("cofeeFinderFavs", favs);
+		alert('Removed '+fav + ' from favourites.');
+	} else {
+		// Sorry! No Web Storage support..
+		alert('Cannot remove '+fav + ' from favourites.');
 	}
 }
 
