@@ -19,7 +19,7 @@
 	
 	<icon src="icon.png" />
 	
-	<gap:splash src="splash.png" />
+	<gap:splash src="splash.jpg" />
 	
 	<!--
       If you do not want any permissions to be added to your app, add the
