@@ -113,11 +113,11 @@ function createMarker(place) {
 	}
 	if(!found)
 	{
-		infowindow.setContent(place.name+'<br><a href="#" onclick="addToFavs(\''+place.name.trim()+'\'); return false;">Add to favourites</a>');
+		infowindow.setContent('<b>'+place.name.trim()+'</b><br>'+place.formatted_address+'<br><a href="#" onclick="addToFavs(\''+place.name.trim()+'\'); return false;">Add to favourites</a>');
 	}
 	else
 	{
-		infowindow.setContent(place.name+'<br><a href="#" onclick="addToFavs(\''+place.name.trim()+'\'); return false;">Remove from favourites</a>');
+		infowindow.setContent('<b>'+place.name.trim()+'</b><br>'+place.formatted_address+'<br><a href="#" onclick="addToFavs(\''+place.name.trim()+'\'); return false;">Remove from favourites</a>');
 	}
     infowindow.open(map, this);
   });
