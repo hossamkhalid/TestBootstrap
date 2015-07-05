@@ -105,9 +105,9 @@ function createMarker(place) {
   });
 
   google.maps.event.addListener(marker, 'click', function() {
-    alert("start");
 	var favs = localStorage.getItem("cofeeFinderFavs");
-	alert(favs);
+	if(favs == null)
+	{ favs = "";}
 	var arr = favs.split(";");
 	var found = false;
 	alert(JSON.stringify(arr));
