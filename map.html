@@ -114,6 +114,8 @@ function createMarker(place) {
 		{ found = true;}
 	}
 	
+	alert(JSON.stringify(place));
+	
 	var content = '<b>'+place.name.trim()+'</b><br>'+place.formatted_address+'<br>';
 	if(place.opening_hours != null && place.opening_hours.open_now != null)
 	{
