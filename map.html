@@ -138,6 +138,7 @@ function addToFavs(fav) {
 		{
 			favs += ";"+fav;
 			localStorage.setItem("cofeeFinderFavs", favs);
+			alert('Added '+fav + ' to favourites.');
 		}
 	} else {
 		// Sorry! No Web Storage support..
