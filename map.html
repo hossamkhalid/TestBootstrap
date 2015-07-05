@@ -165,8 +165,8 @@ function removeFromFavs(fav) {
 	if(typeof(Storage) !== "undefined") {
 		// Code for localStorage/sessionStorage.
 		var favs = localStorage.getItem("cofeeFinderFavs");
-		favs.replace(fav,"");
-		favs.replace(";;",";");
+		favs = favs.replace(fav,"");
+		favs = favs.replace(";;",";");
 		localStorage.setItem("cofeeFinderFavs", favs);
 		alert('Removed '+fav + ' from favourites.');
 	} else {
