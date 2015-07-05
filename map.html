@@ -103,7 +103,7 @@ function createMarker(place) {
   });
 
   google.maps.event.addListener(marker, 'click', function() {
-    infowindow.setContent(place.name+'<br><a href="#" onclick="addToFavs('+place.name+'); return false;">Add to Favourites</a>');
+    infowindow.setContent(place.name+'<br><a href="#" onclick="addToFavs(\''+place.name.trim()+'\'); return false;">Add to Favourites</a>');
     infowindow.open(map, this);
   });
 }
