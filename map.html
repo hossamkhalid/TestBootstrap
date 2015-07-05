@@ -109,7 +109,12 @@ function createMarker(place) {
 }
 
 function addToFavs(fav) {
-	alert(fav + ' added to favourites');
+	navigator.notification.alert(
+            'You are the winner!',  // message
+            alertDismissed,         // callback
+            'Game Over',            // title
+            'Done'                  // buttonName
+        );
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
