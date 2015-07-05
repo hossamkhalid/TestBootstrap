@@ -127,7 +127,7 @@ function createMarker(place) {
 	if(!found)
 	{
 		var name = place.name.trim();
-		name = name.replace("\'", "&quot");
+		name = name.replace("\'", "\\'");
 		infowindow.setContent(content+'<a href="#" onclick="addToFavs(\''+name+'\'); return false;">Add to favourites</a>');
 	}
 	else
