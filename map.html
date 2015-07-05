@@ -128,11 +128,11 @@ function createMarker(place) {
 	
 	if(!found)
 	{
-		infowindow.setContent(content+'<a href="#" onclick="addToFavs(\''+name+'\'); return false;">Add to favourites</a>');
+		infowindow.setContent(content);//+'<a href="#" onclick="addToFavs(\''+name+'\'); return false;">Add to favourites</a>');
 	}
 	else
 	{
-		infowindow.setContent(content+'<a href="#" onclick="removeFromFavs(\''+name+'\'); return false;">Remove from favourites</a>');
+		infowindow.setContent(content);//+'<a href="#" onclick="removeFromFavs(\''+name+'\'); return false;">Remove from favourites</a>');
 	}
     infowindow.open(map, this);
   });
