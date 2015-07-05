@@ -121,7 +121,7 @@ function createMarker(place) {
 	var name = place.name.trim();
 	name = name.replace("\'", "\\'");
 	
-	var content = '<b>'+name+'</b><br>'+place.formatted_address+'<br>';
+	var content = '<b>'+place.name.trim()+'</b><br>'+place.formatted_address+'<br>';
 	if(place.opening_hours != null && place.opening_hours.open_now != null)
 	{
 		if(place.opening_hours.open_now)
