@@ -108,15 +108,19 @@ function createMarker(place) {
 	var favs = localStorage.getItem("cofeeFinderFavs");
 	var arr = favs.split(";");
 	var found = false;
+	alert(JSON.stringify(arr));
 	for(var i=0;i<arr.length;i++)
 	{
 		if(place.name.trim() == arr[i])
 		{ found = true;}
 	}
 	
-	alert(JSON.stringify(place));
 	
-	var content = '<b>'+place.name.trim()+'</b><br>'+place.formatted_address+'<br>';
+	
+	var name = place.name.trim();
+	name = name.replace("\'", "\\'");
+	
+	var content = '<b>'+name+'</b><br>'+place.formatted_address+'<br>';
 	if(place.opening_hours != null && place.opening_hours.open_now != null)
 	{
 		if(place.opening_hours.open_now)
@@ -124,10 +128,7 @@ function createMarker(place) {
 		else
 			content += 'Closed now<br>'
 	}
-	
-	var name = place.name.trim();
-	name = name.replace("\'", "\\'");
-	
+		
 	if(!found)
 	{
 		infowindow.setContent(content+'<a href="#" onclick="addToFavs(\''+name+'\'); return false;">Add to favourites</a>');
