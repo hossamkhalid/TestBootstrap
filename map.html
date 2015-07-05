@@ -126,12 +126,13 @@ function createMarker(place) {
 	
 	if(!found)
 	{
-		
-		infowindow.setContent(content+'<a href="#" onclick="addToFavs(\''+place.name.trim().replace('\'','\\'')+'\'); return false;">Add to favourites</a>');
+		var name = place.name.trim();
+		name = name.replace("\'", "&quot");
+		infowindow.setContent(content+'<a href="#" onclick="addToFavs(\''+name+'\'); return false;">Add to favourites</a>');
 	}
 	else
 	{
-		infowindow.setContent(content+'<a href="#" onclick="addToFavs(\''+place.name.trim()+'\'); return false;">Remove from favourites</a>');
+		infowindow.setContent(content+'<a href="#" onclick="addToFavs(\''+name+'\'); return false;">Remove from favourites</a>');
 	}
     infowindow.open(map, this);
   });
