@@ -146,6 +146,8 @@ function addToFavs(fav) {
 	if(typeof(Storage) !== "undefined") {
 		// Code for localStorage/sessionStorage.
 		var favs = localStorage.getItem("cofeeFinderFavs");
+		if(favs == null)
+		{ favs = "";}
 		var arr = favs.split(";");
 		var found = false;
 		for(var i=0;i<arr.length;i++)
@@ -169,6 +171,8 @@ function removeFromFavs(fav) {
 	if(typeof(Storage) !== "undefined") {
 		// Code for localStorage/sessionStorage.
 		var favs = localStorage.getItem("cofeeFinderFavs");
+		if(favs == null)
+		{ favs = "";}
 		favs = favs.replace(fav,"");
 		favs = favs.replace(";;",";");
 		localStorage.setItem("cofeeFinderFavs", favs);
