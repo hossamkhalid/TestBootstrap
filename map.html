@@ -127,7 +127,7 @@ function createMarker(place) {
 	if(!found)
 	{
 		
-		infowindow.setContent(content+'<a href="#" onclick="addToFavs(\''+place.name.trim()+'\'); return false;">Add to favourites</a>');
+		infowindow.setContent(content+'<a href="#" onclick="addToFavs(\''+place.name.trim().replace('\'','\\'')+'\'); return false;">Add to favourites</a>');
 	}
 	else
 	{
