@@ -16,7 +16,6 @@
 var map;
 var service;
 var infowindow;
-var arr;
 
 function initialize() {
 	map = new google.maps.Map(document.getElementById('map-canvas'), {
@@ -62,9 +61,6 @@ function initialize() {
     // Browser doesn't support Geolocation
     handleNoGeolocation(false);
   }
-  
-	var favs = localStorage.getItem("cofeeFinderFavs");
-	arr = favs.split(";");
 }
 
 function handleNoGeolocation(errorFlag) {
@@ -107,6 +103,8 @@ function createMarker(place) {
   });
 
   google.maps.event.addListener(marker, 'click', function() {
+	var favs = localStorage.getItem("cofeeFinderFavs");
+	var arr = favs.split(";");
 	var found = false;
 	for(var i=0;i<arr.length;i++)
 	{
@@ -128,6 +126,8 @@ function createMarker(place) {
 function addToFavs(fav) {
 	if(typeof(Storage) !== "undefined") {
 		// Code for localStorage/sessionStorage.
+		var favs = localStorage.getItem("cofeeFinderFavs");
+		var arr = favs.split(";");
 		var found = false;
 		for(var i=0;i<arr.length;i++)
 		{
