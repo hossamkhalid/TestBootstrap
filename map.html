@@ -22,23 +22,26 @@ function initialize() {
 		zoom: 15
 	});
 	
-	alert('started');
+	alert('1');
 	
 	if(navigator.geolocation) {
+	alert('2');
     navigator.geolocation.getCurrentPosition(function(position) {
+		alert('3');
       var pyrmont = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 					//new google.maps.LatLng(50.859216, -0.983995);
+					alert('4');
       var locwindow = new google.maps.InfoWindow();
 	//BTI438601	
-	  
+	  alert('5');
 	  map.setCenter(pyrmont);
-
+alert('6');
 	  var request = {
 		location: pyrmont,
 		radius: 2000,
 		query: 'coffee shop'
 	  };
-	  
+	  alert('7');
 	  infowindow = new google.maps.InfoWindow();
 	  var service = new google.maps.places.PlacesService(map);
 	  //service.nearbySearch(request, callback);
