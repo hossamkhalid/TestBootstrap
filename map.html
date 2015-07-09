@@ -39,14 +39,13 @@ function initialize() {
 	  map.setCenter(pyrmont);
 	  var request = {
 		location: pyrmont,
-		radius: 50000,
-		//query: 'coffee shop'
-		name: localStorage.getItem('cofeeFinderFavs')
+		radius: 2000,
+		query: 'coffee shop'
 	  };
 	  infowindow = new google.maps.InfoWindow();
 	  var service = new google.maps.places.PlacesService(map);
-	  service.nearbySearch(request, callback);
-	  //service.textSearch(request, callback);
+	  //service.nearbySearch(request, callback);
+	  service.textSearch(request, callback);
 	  
 	  var image = 'man.png';
 	  var marker = new google.maps.Marker({
