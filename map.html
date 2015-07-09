@@ -22,12 +22,14 @@ function initialize() {
 		zoom: 15
 	});
 	
+	alert('started');
+	
 	if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pyrmont = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 					//new google.maps.LatLng(50.859216, -0.983995);
       var locwindow = new google.maps.InfoWindow();
-	
+	//BTI438601	
 	  
 	  map.setCenter(pyrmont);
 
