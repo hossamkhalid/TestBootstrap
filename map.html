@@ -21,33 +21,27 @@ function initialize() {
 	map = new google.maps.Map(document.getElementById('map-canvas'), {
 		zoom: 15
 	});
-	
-	alert('1');
-	
-	
+		
 	if(navigator.geolocation) {
-	alert('2');
+
 	var options = {
 		enableHighAccuracy: true,
 		timeout: 5000,
 		maximumAge: 0
     };
+
     navigator.geolocation.getCurrentPosition(function(position) {
-		alert('3');
-      var pyrmont = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+	  var pyrmont = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 					//new google.maps.LatLng(50.859216, -0.983995);
-					alert('4');
       var locwindow = new google.maps.InfoWindow();
 	//BTI438601	
-	  alert('5');
 	  map.setCenter(pyrmont);
-alert('6');
 	  var request = {
 		location: pyrmont,
 		radius: 2000,
 		query: 'coffee shop'
 	  };
-	  alert('7');
 	  infowindow = new google.maps.InfoWindow();
 	  var service = new google.maps.places.PlacesService(map);
 	  //service.nearbySearch(request, callback);
@@ -76,10 +70,8 @@ alert('6');
 
 function handleNoGeolocation(errorFlag) {
   if (errorFlag) {
-	alert('Error: The Geolocation service failed or not enabled.');
-    var content = 'Error: The Geolocation service failed.';
+    var content = 'Error: The Geolocation service failed or not enabled.';
   } else {
-	alert('Error: Your browser doesn\'t support geolocation or geolocation is not enabled.');
     var content = 'Error: Your browser doesn\'t support geolocation.';
   }
   var image = 'man.png';
