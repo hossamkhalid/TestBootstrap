@@ -40,7 +40,8 @@ function initialize() {
 	  var request = {
 		location: pyrmont,
 		radius: 2000,
-		query: localStorage.getItem('cofeeFinderFavs')//'coffee shop'
+		//query: localStorage.getItem('cofeeFinderFavs')//'coffee shop'
+		name: localStorage.getItem('cofeeFinderFavs')
 	  };
 	  infowindow = new google.maps.InfoWindow();
 	  var service = new google.maps.places.PlacesService(map);
