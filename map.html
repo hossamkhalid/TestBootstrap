@@ -45,8 +45,8 @@ function initialize() {
 	  };
 	  infowindow = new google.maps.InfoWindow();
 	  var service = new google.maps.places.PlacesService(map);
-	  //service.nearbySearch(request, callback);
-	  service.textSearch(request, callback);
+	  service.nearbySearch(request, callback);
+	  //service.textSearch(request, callback);
 	  
 	  var image = 'man.png';
 	  var marker = new google.maps.Marker({
