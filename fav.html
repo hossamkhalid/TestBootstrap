@@ -86,11 +86,12 @@
 		document.getElementById("fav").innerHTML = "";
 		for(var i=0;i<arr.length;i++)
 		{
-			document.getElementById("fav").innerHTML += '<a href=\"#" onclick="removeFromFavs(\'test\'); return false;">'+arr[i]+'</a><br><br>';
+			document.getElementById("fav").innerHTML += '<a href=\"#" onclick="getFavMap(\'test\'); return false;">'+arr[i]+'</a><br><br>';
 		}
 		
 		function getFavMap(favString) {
 			window.location.href = 'favmap.html';
+			//alert('pressed');
 		}
 	</script>
   </body>
