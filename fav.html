@@ -86,7 +86,8 @@
 		document.getElementById("fav").innerHTML = "";
 		for(var i=0;i<arr.length;i++)
 		{
-			document.getElementById("fav").innerHTML += '<a href="#" class="btn btn-lg btn-default" onclick="getFavMap(\''+arr[i]+'\'); return false;">Find Nearby '+arr[i]+'</a><br>';
+			if(arr[i] != "")
+				document.getElementById("fav").innerHTML += '<a href="#" class="btn btn-lg btn-default" onclick="getFavMap(\''+arr[i]+'\'); return false;">Find Nearby '+arr[i]+'</a><br>';
 		}
 		
 		function getFavMap(favString) {
