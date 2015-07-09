@@ -56,7 +56,7 @@
             <h1 class="cover-heading">Coffee Finder</h1>
             <p class="lead" id="fav">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
             <p class="lead">
-              <a href="map.html" class="btn btn-lg btn-default"><i class="fa fa-search"></i>Find Nearby Coffee</a>
+              <a href="fav.html" class="btn btn-lg btn-default" onclick="clearFavs(); return false;"><i class="fa fa-search"></i>Clear Favourites</a>
             </p>
           </div>
 
@@ -93,6 +93,11 @@
 			var favs = localStorage.setItem("cofeeFinderSearchText", favString);
 			window.location.href = 'favmap.html';
 			//alert('pressed');
+		}
+		
+		function clearFavs() {
+			localStorage.setItem("cofeeFinderSearchText", "");
+			window.location.replace("fav.html");
 		}
 	</script>
   </body>
