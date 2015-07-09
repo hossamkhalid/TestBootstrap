@@ -24,8 +24,14 @@ function initialize() {
 	
 	alert('1');
 	
+	
 	if(navigator.geolocation) {
 	alert('2');
+	var options = {
+		enableHighAccuracy: true,
+		timeout: 5000,
+		maximumAge: 0
+    };
     navigator.geolocation.getCurrentPosition(function(position) {
 		alert('3');
       var pyrmont = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -61,7 +67,7 @@ alert('6');
 	  });
     }, function() {
       handleNoGeolocation(true);
-    });
+    },options);
   } else {
     // Browser doesn't support Geolocation
     handleNoGeolocation(false);
