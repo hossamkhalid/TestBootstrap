@@ -106,8 +106,8 @@
 			{
 				if(arr[i] != "")
 				{
-					arr[i] = arr[i].replace("\'","\\'");
-					document.getElementById("fav").innerHTML += '<a href="#" class="btn btn-lg btn-default" onclick="getFavMap(\''+arr[i]+'\'); return false;">Find Nearby '+arr[i]+'</a><br><br>';
+					var temp = arr[i].replace("\'","\\'");
+					document.getElementById("fav").innerHTML += '<a href="#" class="btn btn-lg btn-default" onclick="getFavMap(\''+temp+'\'); return false;">Find Nearby '+arr[i]+'</a><br><br>';
 				}
 					
 			}
