@@ -54,11 +54,8 @@
 
           <div class="inner cover">
             <p class="lead" id="fav"></p>
-            <p class="lead">
-              <a href="fav.html" class="btn btn-lg btn-default" onclick="clearFavs(); return false;"><i class="fa fa-search"></i>Clear Favourites</a>
-            </p>
 			<p class="lead">
-              <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+              <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">Clear Favourites</button>
             </p>
           </div>
 			<div id="myModal" class="modal fade" role="dialog">
@@ -67,15 +64,14 @@
 				<!-- Modal content-->
 				<div class="modal-content">
 				  <div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">FindMe Coffee</h4>
+					<h4 class="modal-title" style="color: #000;">FindMe Coffee</h4>
 				  </div>
-				  <div class="modal-body">
+				  <div class="modal-body" style="color: #000;">
 					<p>This will clear favourites!</p>
 				  </div>
 				  <div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal" onclick="clearFavs(); return false;">Clear</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="clearFavs(); return false;">Clear</button>
+					<button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
 				  </div>
 				</div>
 
