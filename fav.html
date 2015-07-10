@@ -102,8 +102,10 @@
 		}
 		
 		function clearFavs() {
-			localStorage.setItem("cofeeFinderFavs", "");
-			window.location.replace("fav.html");
+			if (confirm("This will clear favourites!") == true) {
+				localStorage.setItem("cofeeFinderFavs", "");
+				window.location.replace("fav.html");
+			} 
 		}
 	</script>
   </body>
