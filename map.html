@@ -167,8 +167,8 @@ function addToFavs(fav) {
 			alert('Added '+fav + ' to favourites.');
 		}
 	} else {
-		// Sorry! No Web Storage support..
-		alert('Cannot add '+fav + ' to favourites.');
+		// Error! No Web Storage support..
+		alert('Error! No Web Storage support. Cannot add '+fav + ' to favourites.');
 	}
 }
 
@@ -184,7 +184,7 @@ function removeFromFavs(fav) {
 		alert('Removed '+fav + ' from favourites.');
 	} else {
 		// Sorry! No Web Storage support..
-		alert('Cannot remove '+fav + ' from favourites.');
+		alert('Error! No Web Storage support. Cannot remove '+fav + ' from favourites.');
 	}
 }
 

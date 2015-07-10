@@ -79,16 +79,22 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 	<script>
-		var favs = localStorage.getItem("cofeeFinderFavs");
-		if(favs == null)
-		{ favs = "";}
-		arr = favs.split(";");
-		document.getElementById("fav").innerHTML = "";
-		for(var i=0;i<arr.length;i++)
-		{
-			if(arr[i] != "")
-				document.getElementById("fav").innerHTML += '<a href="#" class="btn btn-lg btn-default" onclick="getFavMap(\''+arr[i]+'\'); return false;">Find Nearby '+arr[i]+'</a><br><br>';
+		if(typeof(Storage) !== "undefined") {
+			var favs = localStorage.getItem("cofeeFinderFavs");
+			if(favs == null)
+			{ favs = "";}
+			arr = favs.split(";");
+			document.getElementById("fav").innerHTML = "";
+			for(var i=0;i<arr.length;i++)
+			{
+				if(arr[i] != "")
+					document.getElementById("fav").innerHTML += '<a href="#" class="btn btn-lg btn-default" onclick="getFavMap(\''+arr[i]+'\'); return false;">Find Nearby '+arr[i]+'</a><br><br>';
+			}
+		} else {
+			// Error! No Web Storage support..
+			alert('Error! No Web Storage support. Cannot retrieve favourites.');
 		}
+		
 		
 		function getFavMap(favString) {
 			var favs = localStorage.setItem("cofeeFinderSearchText", favString);
