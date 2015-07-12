@@ -43,10 +43,10 @@
               <h3 class="masthead-brand">NearMe Coffee</h3>
               <nav>
                 <ul class="nav masthead-nav">
-                  <li><a href="index.html">Home</a></li>
+                  <li><a href="#" onclick="gotoHome(); return false;">Home</a></li>
                   <li><a href="map.html">Nearby</a></li>
-				  <li class="active"><a href="fav.html">Favourites</a></li>
-                  <li><a href="about.html">About</a></li>
+				  <li class="active"><a href="#">Favourites</a></li>
+                  <li><a href="#" onclick="gotoAbout(); return false;">About</a></li>
                 </ul>
               </nav>
             </div>
@@ -126,6 +126,18 @@
 		function clearFavs() {
 			localStorage.setItem("cofeeFinderFavs", "");
 			window.location.replace("fav.html");
+		}
+		
+		function gotoHome() {
+			window.location.replace("index.html");
+		}
+		
+		function gotoFavs() {
+			window.location.replace("fav.html");
+		}
+		
+		function gotoAbout() {
+			window.location.replace("about.html");
 		}
 	</script>
   </body>
