@@ -165,6 +165,7 @@ function addToFavs(fav) {
 			favs += ";"+fav;
 			localStorage.setItem("cofeeFinderFavs", favs);
 			alert('Added '+fav + ' to favourites.');
+			infowindow.close();
 		}
 	} else {
 		// Error! No Web Storage support..
@@ -182,6 +183,7 @@ function removeFromFavs(fav) {
 		favs = favs.replace(";;",";");
 		localStorage.setItem("cofeeFinderFavs", favs);
 		alert('Removed '+fav + ' from favourites.');
+		infowindow.close();
 	} else {
 		// Sorry! No Web Storage support..
 		alert('Error! No Web Storage support. Cannot remove '+fav + ' from favourites.');
