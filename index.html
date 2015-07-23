@@ -21,87 +21,50 @@
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-	<script src="http://demos.jquerymobile.com/1.4.5/js/jquery.mobile-1.4.5.min.js"></script>
+	  <script src="lib/jquery.min.js"></script>
+    <script src="lib/jquery.mobile-1.4.5.min.js"></script>
+    <script src="lib/handlebars.min.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 	<link rel="stylesheet" href="css/font-awesome.css">
+    <!-- Application Scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/template-loader.js"></script> <!-- Reference: https://github.com/ccoenraets/phonegap-day-eu/ -->
   </head>
 
   <body>
 
-    <div class="site-wrapper">
 
-      <div class="site-wrapper-inner">
-
-        <div class="cover-container">
-
-          <div class="masthead clearfix">
-            <div class="inner">
-              <h3 class="masthead-brand">NearMe Coffee</h3>
-              <nav>
-                <ul class="nav masthead-nav">
-                  <li class="active"><a href="#">Home</a></li>
-                  <li><a href="map.html">Nearby</a></li>
-				  <li><a href="#" onclick="gotoFavs(); return false;">Favourites</a></li>
-                  <li><a href="#" onclick="gotoAbout(); return false;">About</a></li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-
-          <div class="inner cover" data-role="page" id="home">
-            <h1 class="cover-heading">Find a nearby coffee shop</h1>
-            <p class="lead">We believe that coffee makes everything better and we know that a good cup of coffee is a pleasure to enjoy. NearMe Coffee will help you find your coffee when you really need it wherever you are.</p>
-            <p class="lead">
-              <a href="map.html" class="btn btn-lg btn-default">Find Nearby Coffee</a>
-            </p>
-			<!--
-			<p>
-			  <h1 class="cover-heading">Or</h1>
-			</p>
-			<p class="lead">
-              <a href="create.html" class="btn btn-lg btn-default">Create the perfect cup</a>
-            </p>
-			<p>
-			  <h1 class="cover-heading">Or create your cup</h1>
-			</p>
-          </div>
-		    -->
-		  <div class="mastfoot">
-            <div class="inner">
-              <p>NearMe Coffee 2015</p>
-			  <p><img src="images/google.png"></p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
 	
-    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-	
 	<script>
 	function gotoHome() {
-		window.location.replace("index.html");
+		window.location.replace("index.html#home");
 	}
 	
 	function gotoFavs() {
-		window.location.replace("fav.html");
+		window.location.replace("index.html#fav");
 	}
 	
 	function gotoAbout() {
-		window.location.replace("about.html");
+		window.location.replace("index.html#about");
 	}
+    function gotoMap() {
+        window.location.replace("map.html");
+    }
+    function gotoFavMap() {
+        window.location.replace("favmap.html");
+    }
 	</script>
   </body>
 </html>

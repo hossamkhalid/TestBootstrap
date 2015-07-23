@@ -18,6 +18,11 @@ var service;
 var infowindow;
 
 function initialize() {
+	// handle backbutton to navigate to home
+	document.addEventListener("backbutton", function()  {
+		window.location.replace("index.html");
+	}, false);
+
 	map = new google.maps.Map(document.getElementById('map-canvas'), {
 		zoom: 15
 	});
